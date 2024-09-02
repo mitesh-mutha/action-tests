@@ -14,12 +14,14 @@ on:
 jobs:
   echo-value:
     name: Echo Value
+    runs-on: ubuntu-latest
     steps:
       - name: Value
         run: |
           echo "${{ inputs.deploy-to-test }}"
   run-check:
     name: Run Check
+    runs-on: ubuntu-latest
     if: inputs.deploy-to-test
     steps:
       - name: Run
