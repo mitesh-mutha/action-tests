@@ -1,0 +1,27 @@
+name: Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy-to-test:
+        description: "Deploy to test?"
+        type: boolean
+        default: true
+  push:
+    branches:
+      - "main"
+
+jobs:
+  echo-value:
+    name: Echo Value
+    steps:
+      - name: Value
+        run: |
+          echo "${{ inputs.deploy-to-test }}"
+  run-check:
+    name: Run Check
+    if: inputs.deploy-to-test
+    steps:
+      - name: Run
+        run: |
+          echo "Ran the job"
