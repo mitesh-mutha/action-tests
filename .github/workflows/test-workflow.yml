@@ -23,7 +23,7 @@ jobs:
   run-check:
     name: Run Check
     runs-on: ubuntu-latest
-    if: github.event_name != "workflow_dispatch" || inputs.deploy-to-test
+    if: github.event_name != 'workflow_dispatch' || inputs.deploy-to-test
     steps:
       - name: Run
         run: |
