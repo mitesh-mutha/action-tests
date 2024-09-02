@@ -22,7 +22,7 @@ jobs:
   run-check:
     name: Run Check
     runs-on: ubuntu-latest
-    if: inputs.deploy-to-test
+    if: inputs.deploy-to-test == '' || inputs.deploy-to-test
     steps:
       - name: Run
         run: |
