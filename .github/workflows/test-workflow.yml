@@ -7,19 +7,21 @@ on:
         description: "Deploy to test?"
         type: boolean
         default: true
-  push:
-    branches:
-      - "main"
+      environment-name:
+        description: "Environment Name"
+        type: string
 
 jobs:
   echo-value:
     name: Echo Value
+    environment: ${{ inputs.environment-name }}
     runs-on: ubuntu-latest
     steps:
       - name: Value
         run: |
           echo "${{ inputs.deploy-to-test }}"
           echo "${{ github.event_name }}"
+          echo "${{ secrets.SECRET_VALUE }}"
   run-check:
     name: Run Check
     runs-on: ubuntu-latest
