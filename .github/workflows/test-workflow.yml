@@ -19,10 +19,11 @@ jobs:
       - name: Value
         run: |
           echo "${{ inputs.deploy-to-test }}"
+          echo "${{ github.event_name }}"
   run-check:
     name: Run Check
     runs-on: ubuntu-latest
-    if: inputs.deploy-to-test == '' || inputs.deploy-to-test
+    if: github.event_name != "workflow_dispatch" || inputs.deploy-to-test
     steps:
       - name: Run
         run: |
